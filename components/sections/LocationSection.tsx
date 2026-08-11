@@ -9,7 +9,7 @@ export function LocationSection() {
   const { t, locale } = useLocale();
 
   return (
-    <section className="section" id="location" data-heat="0.34">
+    <section className="section" id="location">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.location.eyebrow}</p>

@@ -36,7 +36,7 @@ export function Lab() {
   }, []);
 
   return (
-    <section className="section lab" id="lab" data-heat="0.04">
+    <section className="section lab" id="lab">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.lab.eyebrow}</p>

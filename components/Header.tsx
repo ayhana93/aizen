@@ -1,21 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale } from "./LocaleProvider";
-import { site } from "@/lib/site";
+import { Logo } from "./Logo";
 
 export function Header() {
   const { t, toggle } = useLocale();
   const [stuck, setStuck] = useState(false);
-  const [logoOk, setLogoOk] = useState(true);
-  const logo = useRef<HTMLImageElement>(null);
-
-  // the 404 can land before React hydrates, so check the element too
-  useEffect(() => {
-    const img = logo.current;
-    if (img && img.complete && img.naturalWidth === 0) setLogoOk(false);
-  }, []);
-
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 24);
     onScroll();
@@ -25,19 +16,7 @@ export function Header() {
 
   return (
     <header className="header" data-stuck={stuck}>
-      <a className="brand" href="#top" aria-label={site.name}>
-        {logoOk ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            ref={logo}
-            src="/media/logo.png"
-            alt={site.name}
-            onError={() => setLogoOk(false)}
-          />
-        ) : (
-          <span className="brand-word">{site.name}</span>
-        )}
-      </a>
+      <Logo variant="lockup" height={38} className="brand" />
 
       <nav className="nav" aria-label={t.footer.nav}>
         {t.nav.map((n) => (

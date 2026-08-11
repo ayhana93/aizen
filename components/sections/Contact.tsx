@@ -45,7 +45,7 @@ export function Contact() {
   }
 
   return (
-    <section className="section" id="contact" data-heat="0.55">
+    <section className="section" id="contact">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.contact.eyebrow}</p>

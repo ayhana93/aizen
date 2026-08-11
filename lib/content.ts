@@ -21,7 +21,12 @@ export const content = {
       title: ["Скрапът влиза", "студен.", "Излиза билет", "със сертификат."],
       lead:
         "AIZEN METAL претопява алуминиев скрап и лее хомогенизирани билети за екструзия в сплави 6060 и 6063. Всяка партида напуска завода с анализ от собствената ни лаборатория.",
-      scroll: "Скролвай, за да загрее",
+      stages: [
+        { n: "01", label: "Леене" },
+        { n: "02", label: "Билет" },
+        { n: "03", label: "Пакетиране" },
+        { n: "04", label: "Експедиция" },
+      ],
       stats: [
         { value: "720", unit: "°C", label: "температура на леене" },
         { value: "6060 / 6063", unit: "", label: "сплави по EN 573-3" },
@@ -236,7 +241,12 @@ export const content = {
       title: ["Scrap goes in", "cold.", "A certified billet", "comes out."],
       lead:
         "AIZEN METAL remelts aluminium scrap and casts homogenised extrusion billets in 6060 and 6063. Every batch leaves the plant with an analysis from our own laboratory.",
-      scroll: "Scroll to heat it up",
+      stages: [
+        { n: "01", label: "Casting" },
+        { n: "02", label: "Billet" },
+        { n: "03", label: "Bundling" },
+        { n: "04", label: "Dispatch" },
+      ],
       stats: [
         { value: "720", unit: "°C", label: "casting temperature" },
         { value: "6060 / 6063", unit: "", label: "alloys to EN 573-3" },

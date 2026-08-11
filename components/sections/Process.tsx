@@ -25,7 +25,6 @@ export function Process() {
               as="article"
               className="step"
               key={s.n}
-              data-heat={stageHeat[i]}
               delay={40}
             >
               <span className="step-n">{s.n}</span>

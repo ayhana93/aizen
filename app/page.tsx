@@ -1,6 +1,6 @@
 import { LocaleProvider } from "@/components/LocaleProvider";
 import { ConfigProvider } from "@/components/ConfigProvider";
-import { ScrollRig, TemperatureRail } from "@/components/ScrollRig";
+import { ScrollRig } from "@/components/ScrollRig";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Process } from "@/components/sections/Process";
@@ -12,15 +12,12 @@ import { Circular } from "@/components/sections/Circular";
 import { LocationSection } from "@/components/sections/LocationSection";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
-import { SceneMount } from "@/components/SceneMount";
 
 export default function Page() {
   return (
     <LocaleProvider>
       <ConfigProvider>
         <ScrollRig />
-        <SceneMount />
-        <TemperatureRail />
         <Header />
         <main>
           <Hero />

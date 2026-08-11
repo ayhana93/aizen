@@ -7,7 +7,7 @@ export function Circular() {
   const { t } = useLocale();
 
   return (
-    <section className="section" id="circular" data-heat="0.42">
+    <section className="section" id="circular">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.circular.eyebrow}</p>

@@ -12,7 +12,7 @@ export function Alloys() {
   const [active, setActive] = useState<"6060" | "6063">("6063");
 
   return (
-    <section className="section" id="alloys" data-heat="0.3">
+    <section className="section" id="alloys">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.alloys.eyebrow}</p>

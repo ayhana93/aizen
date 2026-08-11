@@ -2,6 +2,7 @@
 
 import { useLocale } from "../LocaleProvider";
 import { site } from "@/lib/site";
+import { Logo } from "../Logo";
 
 export function Footer() {
   const { t, locale } = useLocale();
@@ -11,9 +12,7 @@ export function Footer() {
       <div className="shell">
         <div className="footer-grid">
           <div className="footer-brand">
-            <p className="brand-word" style={{ fontSize: "1.3rem" }}>
-              {site.name}
-            </p>
+            <Logo variant="full" height={54} className="footer-logo" />
             <p style={{ color: "var(--alu-dim)", marginTop: "0.8rem", maxWidth: "34ch" }}>
               {t.footer.tagline}
             </p>

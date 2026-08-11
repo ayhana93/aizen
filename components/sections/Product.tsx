@@ -19,7 +19,7 @@ export function Product() {
   const w = 52 + (cfg.length / maxL) * 158;
 
   return (
-    <section className="section" id="product" data-heat="0.34">
+    <section className="section" id="product">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.product.eyebrow}</p>

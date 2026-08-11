@@ -8,19 +8,24 @@ Bulgarian first, English one click away.
 
 ## The idea
 
-The page runs at the temperature of the metal. A single value — `--heat`,
-0 for a cold billet and 1 for the melt at 720 °C — is driven by scroll
-position and read by everything else: the WebGL billet's blackbody shader, the
-ember particles, the accent colour, and the fixed temperature gauge on the
-right. Scrolling into the furnace heats the page up; scrolling on to dispatch
-and the laboratory cools it back down, and the laboratory section cuts hard to
-daylight white because that is where the metal stops glowing and starts being
-measured.
+The hero runs the plant's own sequence on a loop, in WebGL: metal pours from
+the launder into the mould, the cast billet cools on camera from white-hot to
+brushed aluminium, billets stack into a strapped bundle, and a flatbed pulls in
+to take it away. The stage chips under the copy steer it — click one and the
+reel jumps there — and the readout beside them tracks the temperature of the
+metal in that stage, 720 °C down to ambient.
+
+The interface itself is aluminium: buttons, chips and accents are milled metal
+with a bevel and a specular sweep, and fire only ever appears inside the
+furnace. The laboratory section cuts hard to daylight white, because that is
+where the metal stops glowing and starts being measured.
 
 ## Stack
 
 - Next.js 15 (App Router) + React 19 + TypeScript
 - react-three-fiber / three — custom GLSL, no model files, no HDR downloads
+- The logo is the supplied artwork, background-keyed to transparency and split
+  into mark / wordmark / stacked lockup (`public/media/logo-*.png`)
 - Lenis for smooth scrolling
 - Hand-written CSS with design tokens; no UI framework
 - Zod-validated inquiry endpoint
@@ -62,7 +67,9 @@ Also worth confirming:
 - The EN 573-3 composition table in `lib/content.ts` is reference data. Batch
   certificates are the authority; if the plant publishes tighter internal
   limits, use those.
-- Photos: see `public/media/README.md`.
+- Photos: see `public/media/README.md`. The logo is already in place; the
+  master file stays at `public/media/logo.PNG` and the three derived PNGs are
+  generated from it.
 
 ## Content
 

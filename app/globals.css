@@ -28,13 +28,44 @@
   --lab-fg: #0b0d10;
   --lab-edge: #c2c7cd;
 
-  /* scroll-driven: 0 = cold billet, 1 = melt */
+  /* how hot the metal in the hero is right now, 0…1 — read by the scene only */
   --heat: 0.6;
 
-  /* the accent literally cools down with the metal */
-  --accent: color-mix(in oklab, var(--alu-mid) calc((1 - var(--heat)) * 45%), var(--molten));
-  --accent-soft: color-mix(in oklab, var(--alu-dim) calc((1 - var(--heat)) * 60%), var(--glow));
-  --accent-ink: color-mix(in oklab, var(--alu) calc((1 - var(--heat)) * 40%), var(--white-hot));
+  /* the interface is aluminium; fire stays inside the furnace */
+  --accent: #c2cad3;
+  --accent-soft: #8d96a0;
+  --accent-ink: #f1f5f8;
+
+  /* rolled-and-brushed aluminium: a chrome ramp plus a fine grain */
+  --metal-grad: linear-gradient(
+    100deg,
+    #626b74 0%,
+    #aeb7c0 9%,
+    #f4f7fa 19%,
+    #c0c8d0 28%,
+    #79828c 40%,
+    #eef2f6 54%,
+    #9aa3ad 68%,
+    #dee4ea 82%,
+    #6d7680 100%
+  );
+  --metal-text: linear-gradient(
+    100deg,
+    #8b949e 0%,
+    #ffffff 14%,
+    #cdd5dd 26%,
+    #7e8791 38%,
+    #ffffff 52%,
+    #b9c2cb 66%,
+    #6f7881 78%,
+    #eef3f7 92%,
+    #9aa3ad 100%
+  );
+  --brushed: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.055) 0 1px,
+    rgba(0, 0, 0, 0.045) 1px 2px
+  );
 
   --fg: var(--alu);
   --fg-dim: var(--alu-mid);
@@ -197,6 +228,10 @@ p {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
+  background: var(--metal-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -408,43 +443,58 @@ main {
 /* ------------------------------------------------------------------ button */
 
 .btn {
-  --btn-fg: var(--void);
+  --btn-fg: #0a0c0f;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 0.76rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 0.78rem 1.15rem;
-  border: 1px solid var(--accent);
-  background: var(--accent);
+  border: 0;
+  background-image: var(--brushed), var(--metal-grad);
+  background-size: auto, 220% 100%;
+  background-position: 0 0, 30% 0;
   color: var(--btn-fg);
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 200ms var(--ease), box-shadow 260ms var(--ease);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(0, 0, 0, 0.6);
+  transition: transform 180ms var(--ease), box-shadow 260ms var(--ease),
+    background-position 700ms var(--ease);
 }
 
 .btn::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.5), transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 620ms var(--ease);
+  background: linear-gradient(100deg, transparent 32%, rgba(255, 255, 255, 0.9), transparent 68%);
+  transform: translateX(-130%);
+  transition: transform 720ms var(--ease);
 }
 
 .btn:hover {
-  box-shadow: 0 0 0 1px var(--accent), 0 10px 40px -12px var(--accent);
+  background-position: 0 0, 70% 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 10px 30px -14px rgba(226, 233, 240, 0.75);
 }
 
 .btn:hover::after {
-  transform: translateX(120%);
+  transform: translateX(130%);
 }
 
 .btn:active {
   transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .btn[disabled] {
@@ -453,13 +503,20 @@ main {
 }
 
 .btn-ghost {
-  background: none;
+  background-image: none;
+  background-color: transparent;
   color: var(--fg);
-  border-color: var(--edge);
+  border: 1px solid var(--edge);
+  box-shadow: none;
 }
 
 .btn-ghost:hover {
-  border-color: var(--accent);
+  border-color: var(--alu-mid);
+  background-image: none;
+  box-shadow: none;
+}
+
+.btn-ghost:active {
   box-shadow: none;
 }
 
@@ -535,7 +592,25 @@ main {
 
 .hero h1 em {
   font-style: normal;
-  color: var(--accent);
+  color: var(--alu);
+  background: var(--metal-text);
+  background-size: 210% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: roll 9s linear infinite;
+}
+
+@keyframes roll {
+  to {
+    background-position: 160% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 em {
+    animation: none;
+  }
 }
 
 .hero-lead {
@@ -572,6 +647,10 @@ main {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   line-height: 1;
   color: var(--accent-ink);
+  background: var(--metal-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-stats .v sup {
@@ -1046,7 +1125,9 @@ main {
 
 .lab .eyebrow,
 .lab .step-n {
-  color: #b8410f;
+  color: #2a3038;
+  background: none;
+  -webkit-text-fill-color: currentColor;
 }
 
 .lab .mono-label {
@@ -1115,8 +1196,8 @@ main {
   font-family: var(--mono);
   font-size: 0.6rem;
   letter-spacing: 0.16em;
-  border: 1px solid #b8410f;
-  color: #b8410f;
+  border: 1px solid #2a3038;
+  color: #2a3038;
   padding: 0.3rem 0.5rem;
   transform: rotate(-3deg);
   white-space: nowrap;
@@ -1169,7 +1250,7 @@ main {
 .readout .rbar i {
   position: absolute;
   inset: 0 auto 0 0;
-  background: #b8410f;
+  background: #2f353d;
   width: 0;
   transition: width 900ms var(--ease);
 }
@@ -1552,4 +1633,226 @@ main {
 
 .gallery .plate {
   border: 0;
+}
+
+/* ==========================================================================
+   Hero stage — the canvas belongs to the hero, not to the whole page
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-inline: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scene-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* keeps the copy readable wherever the reel happens to be bright */
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+      100deg,
+      rgba(7, 8, 10, 0.95) 0%,
+      rgba(7, 8, 10, 0.88) 28%,
+      rgba(7, 8, 10, 0.35) 44%,
+      rgba(7, 8, 10, 0) 56%
+    ),
+    linear-gradient(0deg, rgba(7, 8, 10, 0.9) 0%, rgba(7, 8, 10, 0) 32%);
+}
+
+@media (max-width: 900px) {
+  .hero-veil {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 8, 10, 0.35) 0%,
+      rgba(7, 8, 10, 0.88) 22%,
+      rgba(7, 8, 10, 0.9) 68%,
+      rgba(7, 8, 10, 0.55) 100%
+    );
+  }
+}
+
+/* ---------------------------------------------------------- stage control */
+
+.stage-hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: clamp(2rem, 5vh, 3rem);
+}
+
+.stage-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--edge);
+  background: color-mix(in oklab, var(--slab) 55%, transparent);
+  color: var(--alu-dim);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 220ms var(--ease), border-color 220ms var(--ease);
+}
+
+.stage-chip .n {
+  opacity: 0.65;
+}
+
+.stage-chip:hover {
+  color: var(--alu);
+  border-color: var(--alu-dim);
+}
+
+.stage-chip[data-active="true"] {
+  color: #0a0c0f;
+  border-color: transparent;
+  background-image: var(--brushed), var(--metal-grad);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+
+.stage-chip[data-active="true"] .n {
+  opacity: 0.8;
+}
+
+/* the progress of the running stage, drawn under the chip */
+.stage-chip i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--alu);
+  width: 0;
+}
+
+.stage-chip[data-active="true"] i {
+  background: #0a0c0f;
+  opacity: 0.55;
+}
+
+.stage-temp {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--alu-mid);
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.4rem;
+}
+
+.stage-temp b {
+  font-weight: 500;
+  color: var(--alu);
+}
+
+/* ================================================================== logo */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.logo-plate {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 420ms var(--ease);
+  will-change: transform;
+}
+
+.logo-plate img {
+  height: 100%;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.55));
+  user-select: none;
+}
+
+.logo-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background: linear-gradient(
+    104deg,
+    transparent 34%,
+    rgba(255, 255, 255, 0.92) 48%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  background-size: 260% 100%;
+  background-position: 120% 0;
+  opacity: 0;
+  transition: background-position 900ms var(--ease), opacity 300ms var(--ease);
+}
+
+.logo:hover .logo-sheen,
+.logo:focus-visible .logo-sheen {
+  opacity: 1;
+  background-position: -60% 0;
+}
+
+.logo-type {
+  opacity: 0.96;
+}
+
+.logo-full .logo-plate {
+  margin-inline: auto;
+}
+
+@media (max-width: 520px) {
+  .logo-type {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-plate {
+    transform: none !important;
+  }
+  .logo-sheen {
+    display: none;
+  }
+}
+
+/* footer lockup */
+
+.footer-logo {
+  display: block;
+  margin-bottom: 1.1rem;
 }

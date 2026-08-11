@@ -11,7 +11,7 @@ export function Break() {
   const { locale } = useLocale();
 
   return (
-    <section className="break shell" data-heat="1">
+    <section className="break shell">
       <p className="who">{locale === "bg" ? "Пещта" : "The furnace"}</p>
       <blockquote>
         {locale === "bg"
