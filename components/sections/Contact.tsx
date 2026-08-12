@@ -191,7 +191,7 @@ export function Contact() {
                 ) : (
                   <a
                     href={`mailto:${site.email}`}
-                    className="mono-label"
+                    className="mono-label plain-case"
                     style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}
                   >
                     {site.email}

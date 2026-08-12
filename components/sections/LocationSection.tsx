@@ -34,7 +34,7 @@ export function LocationSection() {
 
           <Reveal className="loc-card" delay={60}>
             <div className="loc-row">
-              <span className="mono-label">{t.location.eyebrow}</span>
+              <span className="mono-label">{t.misc.location}</span>
               <p>{site.address[locale]}</p>
             </div>
             <div className="loc-row">
@@ -42,11 +42,11 @@ export function LocationSection() {
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </div>
             <div className="loc-row">
-              <span className="mono-label">{locale === "bg" ? "Телефон" : "Phone"}</span>
+              <span className="mono-label">{t.misc.phone}</span>
               <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
             </div>
             <div className="loc-row">
-              <span className="mono-label">{locale === "bg" ? "Координати" : "Coordinates"}</span>
+              <span className="mono-label">{t.misc.coordinates}</span>
               <p style={{ fontFamily: "var(--mono)", fontSize: "0.85rem" }}>
                 {site.geo.lat.toFixed(4)} N · {site.geo.lng.toFixed(4)} E
               </p>

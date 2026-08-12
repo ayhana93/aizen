@@ -16,7 +16,7 @@ const schema = z.object({
   length: z.string().trim().max(20).optional().or(z.literal("")),
   quantity: z.string().trim().max(20).optional().or(z.literal("")),
   message: z.string().trim().min(10).max(4000),
-  locale: z.enum(["bg", "en"]).default("bg"),
+  locale: z.enum(["bg", "en", "tr"]).default("bg"),
   /** honeypot — must stay empty */
   website: z.string().max(0).optional().or(z.literal("")),
 });

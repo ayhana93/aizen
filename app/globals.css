@@ -159,7 +159,7 @@ h3,
 h4 {
   font-family: var(--display);
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 0.98;
   letter-spacing: 0.005em;
   margin: 0;
   text-wrap: balance;
@@ -268,6 +268,23 @@ p {
   font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
   line-height: 1.55;
   margin-top: 1.5rem;
+}
+
+/* İ, Ğ, Ç and Ş need room above and below the cap line */
+:lang(tr) h1,
+:lang(tr) h2,
+:lang(tr) h3,
+:lang(tr) .break blockquote {
+  line-height: 1.14;
+}
+
+:lang(tr) .hero h1 {
+  font-size: clamp(2.3rem, 6vw, 5rem);
+}
+
+/* an address is never shouted, whatever the locale's casing rules */
+.plain-case {
+  text-transform: none !important;
 }
 
 .mono-label {
@@ -408,24 +425,55 @@ main {
   gap: 0.6rem;
 }
 
+/* three languages, one segmented plate */
 .lang {
+  display: inline-flex;
+  border: 1px solid var(--edge);
+  overflow: hidden;
+}
+
+.lang button {
   font-family: var(--mono);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   background: none;
-  border: 1px solid var(--edge);
-  color: var(--alu-mid);
-  padding: 0.42rem 0.6rem;
+  border: 0;
+  border-left: 1px solid var(--edge);
+  color: var(--alu-dim);
+  padding: 0.42rem 0.58rem;
   cursor: pointer;
-  transition: border-color 200ms var(--ease), color 200ms var(--ease);
+  transition: color 180ms var(--ease), background 180ms var(--ease);
 }
 
-.lang:hover {
-  border-color: var(--accent);
+.lang button:first-child {
+  border-left: 0;
+}
+
+.lang button:hover {
   color: var(--fg);
+  background: color-mix(in oklab, var(--slab) 70%, transparent);
 }
 
-@media (max-width: 900px) {
+.lang button[data-active="true"] {
+  color: #06080a;
+  font-weight: 700;
+  background-image: var(--brushed), var(--metal-btn);
+  background-size: auto, 200% 100%;
+  background-position: 0 0, 40% 0;
+}
+
+@media (max-width: 1220px) {
+  .nav {
+    gap: 1rem;
+  }
+  .nav a {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 1040px) {
   .nav {
     display: none;
   }

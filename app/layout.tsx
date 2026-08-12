@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "bg_BG",
-    alternateLocale: ["en_GB"],
+    alternateLocale: ["en_GB", "tr_TR"],
     siteName: site.name,
     title: "AIZEN METAL — леярна за алуминиеви билети",
     description:

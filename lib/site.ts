@@ -14,6 +14,7 @@ export const site = {
   address: {
     bg: "с. Радиново, Северна индустриална зона, обл. Пловдив, България",
     en: "Radinovo, North Industrial Zone, Plovdiv Province, Bulgaria",
+    tr: "Radinovo, Kuzey Sanayi Bölgesi, Plovdiv, Bulgaristan",
   },
   /** Radinovo, Plovdiv — approximate, refine with the exact plant entrance. */
   geo: { lat: 42.2019, lng: 24.6206 },
@@ -26,4 +27,19 @@ export const site = {
   homogenizationC: 575,
 } as const;
 
-export type Locale = "bg" | "en";
+export const LOCALES = ["bg", "en", "tr"] as const;
+export type Locale = (typeof LOCALES)[number];
+
+/** What each language calls itself in the switcher. */
+export const LOCALE_LABELS: Record<Locale, string> = {
+  bg: "БГ",
+  en: "EN",
+  tr: "TR",
+};
+
+/** For Intl number formatting. */
+export const LOCALE_TAGS: Record<Locale, string> = {
+  bg: "bg-BG",
+  en: "en-GB",
+  tr: "tr-TR",
+};

@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "./LocaleProvider";
 import { Logo } from "./Logo";
+import { LOCALES, LOCALE_LABELS } from "@/lib/site";
 
 export function Header() {
-  const { t, toggle } = useLocale();
+  const { t, locale, setLocale } = useLocale();
   const [stuck, setStuck] = useState(false);
+
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 24);
     onScroll();
@@ -27,9 +29,20 @@ export function Header() {
       </nav>
 
       <div className="header-tools">
-        <button className="lang" onClick={toggle} aria-label="Switch language">
-          {t.langLabel}
-        </button>
+        <div className="lang" role="group" aria-label="Language">
+          {LOCALES.map((l) => (
+            <button
+              key={l}
+              type="button"
+              data-active={locale === l}
+              aria-pressed={locale === l}
+              lang={l}
+              onClick={() => setLocale(l)}
+            >
+              {LOCALE_LABELS[l]}
+            </button>
+          ))}
+        </div>
         <a className="btn" href="#contact">
           {t.cta}
         </a>

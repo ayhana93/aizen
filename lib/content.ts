@@ -1,13 +1,15 @@
 import { site, type Locale } from "./site";
 
 /**
- * All copy lives here so the BG/EN toggle stays a single switch.
- * Written from the buyer's side of the screen: an extrusion plant's
- * purchasing or quality lead deciding whether to send an inquiry.
+ * All copy lives here so the language switch stays a single lookup.
+ *
+ * The three languages are written, not translated. Bulgarian is the source,
+ * but English and Turkish say the same thing the way a buyer in that language
+ * would expect to read it — an extrusion plant's purchasing or quality lead
+ * deciding whether to send an inquiry.
  */
 export const content = {
   bg: {
-    langLabel: "EN",
     nav: [
       { id: "process", label: "Процес" },
       { id: "alloys", label: "Сплави" },
@@ -16,17 +18,17 @@ export const content = {
       { id: "contact", label: "Контакт" },
     ],
     cta: "Запитване",
+    misc: {
+      location: "Локация",
+      phone: "Телефон",
+      coordinates: "Координати",
+      mm: "мм",
+    },
     hero: {
       eyebrow: "Леярна за алуминиеви билети · Пловдив",
       title: ["Скрапът влиза", "студен.", "Излиза билет", "със сертификат."],
       lead:
         "AIZEN METAL претопява алуминиев скрап и лее хомогенизирани билети за екструзия в сплави 6060 и 6063. Всяка партида напуска завода с анализ от собствената ни лаборатория.",
-      stages: [
-        { n: "01", label: "Леене" },
-        { n: "02", label: "Билет" },
-        { n: "03", label: "Пакетиране" },
-        { n: "04", label: "Експедиция" },
-      ],
       stats: [
         { value: "720", unit: "°C", label: "температура на леене" },
         { value: "6060 / 6063", unit: "", label: "сплави по EN 573-3" },
@@ -37,7 +39,7 @@ export const content = {
       eyebrow: "Процес",
       title: "От скрап до билет",
       lead:
-        "Шест етапа. Температурата на страницата следва температурата на метала — скролвайте през пещта и обратно до студения, готов билет.",
+        "Шест етапа, всеки със своя температура — от 720 °C в пещта до студения, нарязан билет на рампата.",
       steps: [
         {
           n: "01",
@@ -65,7 +67,7 @@ export const content = {
           title: "Непрекъснато леене",
           temp: "700 °C",
           body:
-            "Метал­ът се лее вертикално през филтър и дегазатор в кристализатори с водно охлаждане. Скоростта и охлаждането определят структурата на сърцевината.",
+            "Металът се лее вертикално през филтър и дегазатор в кристализатори с водно охлаждане. Скоростта и охлаждането определят структурата на сърцевината.",
         },
         {
           n: "05",
@@ -82,6 +84,11 @@ export const content = {
             "Рязане по зададена дължина, ултразвуков и визуален контрол, маркиране на партидата и сертификат. Пакетирано и готово за товарене.",
         },
       ],
+    },
+    breakSection: {
+      who: "Пещта",
+      quote: `Алуминият се лее при ${site.castTempC} °C.`,
+      note: "Оттам нататък всичко е контрол: химия, скорост на леене, охлаждане.",
     },
     alloys: {
       eyebrow: "Сплави",
@@ -227,7 +234,6 @@ export const content = {
   },
 
   en: {
-    langLabel: "BG",
     nav: [
       { id: "process", label: "Process" },
       { id: "alloys", label: "Alloys" },
@@ -236,17 +242,17 @@ export const content = {
       { id: "contact", label: "Contact" },
     ],
     cta: "Get a quote",
+    misc: {
+      location: "Location",
+      phone: "Phone",
+      coordinates: "Coordinates",
+      mm: "mm",
+    },
     hero: {
       eyebrow: "Aluminium billet foundry · Plovdiv, Bulgaria",
       title: ["Scrap goes in", "cold.", "A certified billet", "comes out."],
       lead:
         "AIZEN METAL remelts aluminium scrap and casts homogenised extrusion billets in 6060 and 6063. Every batch leaves the plant with an analysis from our own laboratory.",
-      stages: [
-        { n: "01", label: "Casting" },
-        { n: "02", label: "Billet" },
-        { n: "03", label: "Bundling" },
-        { n: "04", label: "Dispatch" },
-      ],
       stats: [
         { value: "720", unit: "°C", label: "casting temperature" },
         { value: "6060 / 6063", unit: "", label: "alloys to EN 573-3" },
@@ -257,7 +263,7 @@ export const content = {
       eyebrow: "Process",
       title: "From scrap to billet",
       lead:
-        "Six stages. The page runs at the temperature of the metal — scroll through the furnace and back down to a cold, finished billet.",
+        "Six stages, each at its own temperature — from 720 °C in the furnace to the cold, cut billet on the loading bay.",
       steps: [
         {
           n: "01",
@@ -302,6 +308,11 @@ export const content = {
             "Cut to your length, ultrasonically and visually inspected, batch-marked and certified. Bundled and ready to load.",
         },
       ],
+    },
+    breakSection: {
+      who: "The furnace",
+      quote: `Aluminium casts at ${site.castTempC} °C.`,
+      note: "From there on it is all control: chemistry, casting speed, cooling.",
     },
     alloys: {
       eyebrow: "Alloys",
@@ -443,6 +454,230 @@ export const content = {
       rights: "All rights reserved.",
       nav: "Navigation",
       contacts: "Contacts",
+    },
+  },
+
+  tr: {
+    nav: [
+      { id: "process", label: "Süreç" },
+      { id: "alloys", label: "Alaşımlar" },
+      { id: "product", label: "Billet" },
+      { id: "lab", label: "Laboratuvar" },
+      { id: "contact", label: "İletişim" },
+    ],
+    cta: "Teklif alın",
+    misc: {
+      location: "Konum",
+      phone: "Telefon",
+      coordinates: "Koordinatlar",
+      mm: "mm",
+    },
+    hero: {
+      eyebrow: "Alüminyum billet dökümhanesi · Plovdiv, Bulgaristan",
+      title: ["Hurda içeri", "soğuk girer.", "Dışarı sertifikalı", "billet çıkar."],
+      lead:
+        "AIZEN METAL, alüminyum hurdayı yeniden ergitip 6060 ve 6063 alaşımlarında homojenize ekstrüzyon billeti döküyor. Her parti, kendi laboratuvarımızın analiziyle birlikte fabrikadan çıkar.",
+      stats: [
+        { value: "720", unit: "°C", label: "döküm sıcaklığı" },
+        { value: "6060 / 6063", unit: "", label: "EN 573-3 alaşımları" },
+        { value: "Ø152–228", unit: "mm", label: "billet çapları" },
+      ],
+    },
+    process: {
+      eyebrow: "Süreç",
+      title: "Hurdadan billete",
+      lead:
+        "Altı aşama, her biri kendi sıcaklığında — ocakta 720 °C'den yükleme sahasındaki soğuk, kesilmiş billete kadar.",
+      steps: [
+        {
+          n: "01",
+          title: "Hurda kabulü",
+          temp: "20 °C",
+          body:
+            "Alüminyum hurda alıyoruz: profil, talaş, ekstrüzyon firesi ve levha. Her sevkiyat tartılır, sınıflandırılır ve şarja girmeden önce cinsine göre ayrılır.",
+        },
+        {
+          n: "02",
+          title: "Şarj ve ergitme",
+          temp: "720 °C",
+          body:
+            "Hurda ocağa şarj edilir ve ergitilir. Şarj, hedef alaşıma göre hesaplanır; böylece kimyasal bileşim, master alaşımla düzeltmeye gerek kalmadan aralığa oturur.",
+        },
+        {
+          n: "03",
+          title: "Rafinasyon ve gaz alma",
+          temp: "730 °C",
+          body:
+            "Sıvı metal, hidrojen ve inklüzyonlardan arındırmak için inert gaz ve flaks ile işlenir. Cüruf alınır, dökümden önce spektrometre numunesi çekilir.",
+        },
+        {
+          n: "04",
+          title: "Sürekli döküm",
+          temp: "700 °C",
+          body:
+            "Metal, filtre ve degazörden geçirilerek su soğutmalı kalıplara dikey dökülür. Döküm hızı ve soğutma, billetin iç yapısını belirler.",
+        },
+        {
+          n: "05",
+          title: "Homojenizasyon",
+          temp: "575 °C",
+          body:
+            "Billetler homojenize edilip kontrollü soğutulur. Bu, yapıyı dengeler ve metali preste öngörülebilir kılar: daha düşük basınç, daha temiz yüzey.",
+        },
+        {
+          n: "06",
+          title: "Kesim, kontrol, sevkiyat",
+          temp: "20 °C",
+          body:
+            "İstenen boyda kesim, ultrasonik ve gözle muayene, parti işaretleme ve sertifika. Paketlenir, yüklemeye hazır hâle gelir.",
+        },
+      ],
+    },
+    breakSection: {
+      who: "Ocak",
+      quote: `Alüminyum ${site.castTempC} °C'de dökülür.`,
+      note: "Ondan sonrası tamamen kontrol: kimya, döküm hızı, soğutma.",
+    },
+    alloys: {
+      eyebrow: "Alaşımlar",
+      title: "6060 ve 6063",
+      lead:
+        "İkisi de Al-Mg-Si ekstrüzyon alaşımı. Fark magnezyum ve silisyumda: 6063 daha fazla Mg taşır ve daha yüksek mukavemete çıkar, 6060 daha kolay akar ve karmaşık kesitlerde daha affedicidir.",
+      hint: "Kimyasal bileşimi karşılaştırmak için bir alaşım seçin",
+      tableHead: ["Element", "6060", "6063"],
+      note:
+        "Sınır değerler EN 573-3'e göredir (ağırlıkça %, kalanı Al). Her partinin gerçek bileşimi parti sertifikasında belirtilir.",
+      cards: [
+        {
+          id: "6060",
+          name: "EN AW-6060",
+          tagline: "Yumuşak, şekillenebilir, ince kesitler için",
+          uses: [
+            "Mimari profiller ve doğrama",
+            "İnce cidarlı ve karmaşık kesitler",
+            "Eloksal ve toz boya",
+          ],
+          temper: "T5 · T6 · T66",
+        },
+        {
+          id: "6063",
+          name: "EN AW-6063",
+          tagline: "Daha yüksek mukavemet, üstün yüzey",
+          uses: [
+            "Yük taşıyan konstrüksiyon profilleri",
+            "Boru, korkuluk, güneş kırıcı",
+            "Dekoratif eloksal",
+          ],
+          temper: "T5 · T6 · T66",
+        },
+      ],
+    },
+    product: {
+      eyebrow: "Ürün",
+      title: "Ekstrüzyon billeti",
+      lead:
+        "Homojenize, döküm ya da soyulmuş yüzeyle, presinize göre kesilmiş. Aşağıdan seçin — ölçü, sağdaki billete anında yansır.",
+      diameterLabel: "Çap",
+      lengthLabel: "Boy",
+      alloyLabel: "Alaşım",
+      weightLabel: "Billet başına ağırlık",
+      weightNote: "2,70 g/cm³ yoğunlukla hesaplanmıştır — yaklaşıktır.",
+      askFor: "Bu ölçüler için teklif isteyin",
+      specs: [
+        { k: "Durum", v: "Homojenize, kontrollü soğutulmuş" },
+        { k: "Yüzey", v: "Talep üzerine döküm ya da soyulmuş" },
+        { k: "Boy toleransı", v: "± 5 mm (görüşmeye açık)" },
+        { k: "Ambalaj", v: "Çemberli paketler, ahşap takozlar" },
+      ],
+    },
+    lab: {
+      eyebrow: "Laboratuvar",
+      title: "Her parti rakamlarıyla gelir",
+      lead:
+        "Kendi laboratuvarımız her dökümden önce numune alır ve parti sertifikası düzenler. Kimyası kayda geçmemiş metal fabrikadan çıkmaz.",
+      readout: "Spektrometre analizi · döküm öncesi numune",
+      points: [
+        {
+          title: "Ergiyikten numune",
+          body: "Kimyayı düzeltmek hâlâ mümkünken, dökümden önce alınır.",
+        },
+        {
+          title: "Optik emisyon analizi",
+          body: "Her alaşım elementi okunur ve alaşımın aralığıyla karşılaştırılır.",
+        },
+        {
+          title: "Parti sertifikası",
+          body: "Bileşim, parti numarası, alaşım, ölçü ve tarih — her sevkiyatla birlikte.",
+        },
+      ],
+      certTitle: "Parti sertifikası",
+      certFields: [
+        ["Parti", "AZ-2026-0000"],
+        ["Alaşım", "EN AW-6063"],
+        ["Ölçü", "Ø178 × 6000 mm"],
+        ["Durum", "Homojenize"],
+      ],
+      certFoot: "Örnek görünüm. Gerçek belge laboratuvarın imzasını taşır.",
+    },
+    circular: {
+      eyebrow: "Döngü",
+      title: "Alüminyum eskimez",
+      lead:
+        "Alüminyum, özelliklerini kaybetmeden geri dönüşür; yeniden ergitmek birincil alüminyum üretiminin yaklaşık %5'i kadar enerji ister. Bugün bir binadan sökülen profil, gelecek ay billet olabilir.",
+      loop: ["Hurda", "Ergiyik", "Billet", "Profil", "Hurda"],
+      buying: {
+        title: "Alüminyum hurda alıyoruz",
+        body:
+          "Profil, talaş, ekstrüzyon firesi, levha ve üretim ıskartası. Cinsini ve tonajı yazın, fiyatla dönelim.",
+        cta: "Hurdanızı teklif edin",
+      },
+    },
+    location: {
+      eyebrow: "Konum",
+      title: "Radinovo, Plovdiv",
+      lead:
+        "Fabrika, Plovdiv'in Kuzey Sanayi Bölgesi'nde — Trakia otoyoluna dakikalar, Burgaz Limanı'na bir buçuk saat mesafede. Yükleme sahada, programa göre yapılır.",
+      cta: "Haritada aç",
+    },
+    contact: {
+      eyebrow: "Teklif talebi",
+      title: "İhtiyacınızı yazın",
+      lead:
+        "Alaşım, çap, boy ve tonaj — fiyat ve termin için bu kadarı yeterli. Aynı iş günü içinde dönüyoruz.",
+      form: {
+        name: "Ad Soyad",
+        company: "Firma",
+        email: "E-posta",
+        phone: "Telefon",
+        subject: "Talebiniz ne hakkında",
+        subjects: [
+          { v: "billets", l: "Billet almak" },
+          { v: "scrap", l: "Size hurda satmak" },
+          { v: "other", l: "Diğer" },
+        ],
+        alloy: "Alaşım",
+        diameter: "Çap",
+        length: "Boy",
+        quantity: "Miktar (ton)",
+        message: "Mesaj",
+        messagePlaceholder: "Toleranslar, termin, sevkiyat sıklığı…",
+        submit: "Talebi gönder",
+        sending: "Gönderiliyor…",
+        successTitle: "Talebiniz iletildi",
+        successBody: "Aldık. Aynı iş günü içinde size döneceğiz.",
+        errorTitle: "Talep gönderilemedi",
+        errorBody: "Tekrar deneyin ya da doğrudan bize yazın:",
+        required: "zorunlu",
+        invalidEmail: "E-posta adresini kontrol edin",
+        tooShort: "Biraz daha ayrıntı ekleyin",
+        again: "Yeni talep",
+      },
+    },
+    footer: {
+      tagline: "Alüminyum billet dökümhanesi · 6060 ve 6063 alaşımları",
+      rights: "Tüm hakları saklıdır.",
+      nav: "Menü",
+      contacts: "İletişim",
     },
   },
 } satisfies Record<Locale, unknown>;

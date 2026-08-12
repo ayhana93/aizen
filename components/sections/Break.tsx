@@ -1,28 +1,19 @@
 "use client";
 
 import { useLocale } from "../LocaleProvider";
-import { site } from "@/lib/site";
 
 /**
- * A gap in the page where the furnace shows through. No panel, no card —
- * the billet from the WebGL layer is the content here.
+ * A gap between chapters where the furnace shows through — no panel, no card,
+ * just the statement and the heat behind it.
  */
 export function Break() {
-  const { locale } = useLocale();
+  const { t } = useLocale();
 
   return (
     <section className="break shell">
-      <p className="who">{locale === "bg" ? "Пещта" : "The furnace"}</p>
-      <blockquote>
-        {locale === "bg"
-          ? `Алуминият се лее при ${site.castTempC} °C.`
-          : `Aluminium casts at ${site.castTempC} °C.`}
-      </blockquote>
-      <p style={{ color: "var(--fg-dim)", maxWidth: "34ch" }}>
-        {locale === "bg"
-          ? "Оттам нататък всичко е контрол: химия, скорост на леене, охлаждане."
-          : "From there on it is all control: chemistry, casting speed, cooling."}
-      </p>
+      <p className="who">{t.breakSection.who}</p>
+      <blockquote>{t.breakSection.quote}</blockquote>
+      <p style={{ color: "var(--fg-dim)", maxWidth: "34ch" }}>{t.breakSection.note}</p>
     </section>
   );
 }

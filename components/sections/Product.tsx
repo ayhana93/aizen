@@ -3,14 +3,14 @@
 import { useLocale } from "../LocaleProvider";
 import { Reveal } from "../Reveal";
 import { billetWeight, useConfig } from "../ConfigProvider";
-import { site } from "@/lib/site";
+import { LOCALE_TAGS, site } from "@/lib/site";
 
 export function Product() {
   const { t, locale } = useLocale();
   const cfg = useConfig();
 
   const kg = billetWeight(cfg.diameter, cfg.length);
-  const unit = locale === "bg" ? "мм" : "mm";
+  const unit = t.misc.mm;
 
   // technical drawing, scaled to the chosen billet
   const maxD = site.diameters[site.diameters.length - 1];
@@ -189,7 +189,7 @@ export function Product() {
               <div>
                 <p className="mono-label">{t.product.weightLabel}</p>
                 <p className="n">
-                  {kg.toLocaleString(locale === "bg" ? "bg-BG" : "en-GB", {
+                  {kg.toLocaleString(LOCALE_TAGS[locale], {
                     maximumFractionDigits: 0,
                   })}{" "}
                   kg
