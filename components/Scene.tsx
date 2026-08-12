@@ -3,7 +3,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { getHeat } from "@/lib/heat";
+import { getHeat, setHeat } from "@/lib/heat";
 
 /* ---------------------------------------------------------------- shaders */
 
@@ -271,6 +271,7 @@ export default function Scene() {
 
   useEffect(() => {
     setOk(hasWebGL());
+    setHeat(0.55);
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const apply = () => setReduced(mq.matches);
     apply();

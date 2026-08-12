@@ -61,6 +61,17 @@
     #eef3f7 92%,
     #9aa3ad 100%
   );
+  /* button plate: kept light end-to-end so black type never loses contrast */
+  --metal-btn: linear-gradient(
+    100deg,
+    #c3cbd3 0%,
+    #ffffff 14%,
+    #dbe1e7 30%,
+    #b9c2ca 44%,
+    #ffffff 60%,
+    #d3dae0 76%,
+    #bcc5cd 100%
+  );
   --brushed: repeating-linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.055) 0 1px,
@@ -443,20 +454,20 @@ main {
 /* ------------------------------------------------------------------ button */
 
 .btn {
-  --btn-fg: #0a0c0f;
+  --btn-fg: #06080a;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   font-family: var(--mono);
-  font-weight: 500;
+  font-weight: 700;
   font-size: 0.76rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.78rem 1.15rem;
   border: 0;
-  background-image: var(--brushed), var(--metal-grad);
-  background-size: auto, 220% 100%;
-  background-position: 0 0, 30% 0;
+  background-image: var(--brushed), var(--metal-btn);
+  background-size: auto, 200% 100%;
+  background-position: 0 0, 28% 0;
   color: var(--btn-fg);
   cursor: pointer;
   position: relative;
@@ -541,76 +552,17 @@ main {
 
 .hero h1 .line {
   display: block;
-  overflow: hidden;
-}
-
-.hero h1 .line > span {
-  display: block;
-  will-change: transform;
-  animation: rise 1000ms var(--ease) both;
-}
-
-@keyframes rise {
-  from {
-    transform: translateY(102%);
-  }
-  to {
-    transform: none;
-  }
-}
-
-.hero-lead,
-.hero-actions,
-.hero-stats {
-  animation: fade-up 900ms var(--ease) both;
-  animation-delay: 520ms;
-}
-
-.hero-stats {
-  animation-delay: 640ms;
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero h1 .line > span,
-  .hero-lead,
-  .hero-actions,
-  .hero-stats {
-    animation: none;
-  }
 }
 
 .hero h1 em {
   font-style: normal;
   color: var(--alu);
   background: var(--metal-text);
-  background-size: 210% 100%;
+  background-size: 130% 100%;
+  background-position: 22% 0;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: roll 9s linear infinite;
-}
-
-@keyframes roll {
-  to {
-    background-position: 160% 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero h1 em {
-    animation: none;
-  }
 }
 
 .hero-lead {
@@ -1689,88 +1641,6 @@ main {
       rgba(7, 8, 10, 0.55) 100%
     );
   }
-}
-
-/* ---------------------------------------------------------- stage control */
-
-.stage-hud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: clamp(2rem, 5vh, 3rem);
-}
-
-.stage-chip {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.55rem;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 0.55rem 0.8rem;
-  border: 1px solid var(--edge);
-  background: color-mix(in oklab, var(--slab) 55%, transparent);
-  color: var(--alu-dim);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: color 220ms var(--ease), border-color 220ms var(--ease);
-}
-
-.stage-chip .n {
-  opacity: 0.65;
-}
-
-.stage-chip:hover {
-  color: var(--alu);
-  border-color: var(--alu-dim);
-}
-
-.stage-chip[data-active="true"] {
-  color: #0a0c0f;
-  border-color: transparent;
-  background-image: var(--brushed), var(--metal-grad);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
-}
-
-.stage-chip[data-active="true"] .n {
-  opacity: 0.8;
-}
-
-/* the progress of the running stage, drawn under the chip */
-.stage-chip i {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--alu);
-  width: 0;
-}
-
-.stage-chip[data-active="true"] i {
-  background: #0a0c0f;
-  opacity: 0.55;
-}
-
-.stage-temp {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--alu-mid);
-  font-variant-numeric: tabular-nums;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: 0.4rem;
-}
-
-.stage-temp b {
-  font-weight: 500;
-  color: var(--alu);
 }
 
 /* ================================================================== logo */

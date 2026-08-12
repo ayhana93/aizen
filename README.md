@@ -8,12 +8,14 @@ Bulgarian first, English one click away.
 
 ## The idea
 
-The hero runs the plant's own sequence on a loop, in WebGL: metal pours from
-the launder into the mould, the cast billet cools on camera from white-hot to
-brushed aluminium, billets stack into a strapped bundle, and a flatbed pulls in
-to take it away. The stage chips under the copy steer it — click one and the
-reel jumps there — and the readout beside them tracks the temperature of the
-metal in that stage, 720 °C down to ambient.
+The hero is a single cast billet in WebGL, glowing at casting temperature and
+turning slowly, its brushed surface and blackbody colour written in GLSL and
+its tilt following the pointer.
+
+The four-stage production reel (pour → billet → bundle → truck) still lives in
+`components/HeroScene.tsx` with its clock in `lib/stage.ts`. Nothing imports it
+today; to bring it back, point `components/SceneMount.tsx` at `./HeroScene`
+and restore the stage chips in the hero.
 
 The interface itself is aluminium: buttons, chips and accents are milled metal
 with a bevel and a specular sweep, and fire only ever appears inside the
